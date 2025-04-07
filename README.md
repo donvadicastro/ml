@@ -4,7 +4,7 @@ Use of TypeScript, React and other UI tech stack as alternative to Python ML bro
 
 ## Finish your CI setup
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/bypE5l4LLg)
+[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/IB74GMO7lk)
 
 
 ## Run tasks
@@ -12,19 +12,19 @@ Use of TypeScript, React and other UI tech stack as alternative to Python ML bro
 To run the dev server for your app, use:
 
 ```sh
-npx nx serve ml
+npx nx serve linear-regression
 ```
 
 To create a production bundle:
 
 ```sh
-npx nx build ml
+npx nx build linear-regression
 ```
 
 To see all available targets to run for a project, run:
 
 ```sh
-npx nx show project ml
+npx nx show project linear-regression
 ```
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
