@@ -24,6 +24,7 @@ const BuildModel: React.FC = () => {
   useEffect(() => {
     if (data.length === 0 || !plotRef.current) return;
 
+    const ref = (plotRef.current as Plotly.PlotlyHTMLElement).el;
     const iterations = 3000;
     const alpha = 0.000001;
     const { min, max } = getMinMax(data);
@@ -31,8 +32,8 @@ const BuildModel: React.FC = () => {
     const trainGenerator = train(
       data,
       iterations,
-      predictions.w,
-      predictions.b,
+      0,
+      0,
       alpha
     );
 
@@ -42,12 +43,13 @@ const BuildModel: React.FC = () => {
     while (next.done === false) {
       indexes.push(next.value.i);
 
-      Plotly.addFrames(plotRef.current.el, [
+      Plotly.addFrames(ref, [
         {
           name: 'model-training-frames-' + next.value.i,
           data: [
             null,
             {
+              // eslint-disable-next-line no-loop-func
               y: [min, max].map((x: number) =>
                 model(x, next.value.w, next.value.b)
               ),
@@ -62,7 +64,7 @@ const BuildModel: React.FC = () => {
     }
 
     Plotly.animate(
-      plotRef.current.el,
+      ref,
       indexes.map((i) => 'model-training-frames-' + i),
       {
         frame: { duration: 2000, redraw: false },
