@@ -5,6 +5,8 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@types/d3": "^7.4.3",
+    "d3": "^7.9.0",
     "papaparse": "^5.5.2",
     "plotly": "^1.0.6",
     "plotly.js": "^3.0.1",

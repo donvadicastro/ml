@@ -1,7 +1,6 @@
 import BuildModel from '../pages/build-model';
-import NxWelcome from './nx-welcome';
 
-import { Route, Routes, Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 
 export function App() {
   return (
@@ -32,10 +31,7 @@ export function App() {
             </div>
           }
         />
-        <Route
-          path="/page-build-model"
-          element={<BuildModel />}
-        />
+        <Route path="/page-build-model" element={<BuildModel />} />
       </Routes>
       {/* END: routes */}
     </div>
