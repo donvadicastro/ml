@@ -104,11 +104,9 @@ const BuildModel: React.FC = () => {
           title: { text: 'House rent prices' },
           xaxis: {
             title: { text: 'size_sqft' },
-            range: [min, max],
           },
           yaxis: {
             title: { text: 'price' },
-            range: [0, 10000],
           },
         }}
         style={{ width: '100%', height: '100%' }}
