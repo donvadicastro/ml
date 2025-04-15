@@ -110,6 +110,18 @@ const BuildModel: React.FC = () => {
           },
         }}
         style={{ width: '100%', height: '100%' }}
+        config={{
+          modeBarButtonsToRemove: [
+            'zoom2d',
+            'zoomIn2d',
+            'zoomOut2d',
+            'autoScale2d',
+            'resetScale2d',
+            'pan2d',
+            'select2d',
+            'lasso2d',
+          ],
+        }}
       />
     </div>
   );
