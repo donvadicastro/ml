@@ -1,4 +1,4 @@
-import BuildModel from '../pages/build-model';
+import LinearRegression from '../pages/linear-regression';
 
 import { Link, Route, Routes } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ export function App() {
             </div>
           }
         />
-        <Route path="/page-build-model" element={<BuildModel />} />
+        <Route path="/page-build-model" element={<LinearRegression />} />
       </Routes>
       {/* END: routes */}
     </div>

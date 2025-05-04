@@ -1,4 +1,4 @@
 export type HousePriceInfoType = {
-  size_sqft?: number;
+  size_sqft: number;
   rent: number;
 }
