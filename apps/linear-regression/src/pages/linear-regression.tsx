@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Plot from 'react-plotly.js';
 import Plotly from 'plotly.js/dist/plotly.js';
 import { fetchCsvData } from '../utils/loader';
-import { model, train } from '../utils/model';
-import { HousePriceInfoType } from '../types/housePriceInfo';
+import { HousePriceInfoType, model, train } from '../utils/model';
 
 const LinearRegression: React.FC = () => {
     const [data, setData] = useState<HousePriceInfoType[]>([]);
@@ -32,7 +31,12 @@ const LinearRegression: React.FC = () => {
         const iterations = 100000;
         const alpha = 0.00000000005;
         const { min, max } = getMinMax(data);
-        const history: { w: number; b: number; squaredCost: number; i: number }[] = [];
+        const history: {
+            w: number;
+            b: number;
+            squaredCost: number;
+            i: number;
+        }[] = [];
 
         const trainGenerator = train(data, iterations, 0, 0, alpha);
 
@@ -52,7 +56,9 @@ const LinearRegression: React.FC = () => {
                             y: [min, max].map((x: number) =>
                                 model(x, value.w, value.b)
                             ),
-                            text: `Weights: ${value.w.toFixed(2)}<br />Bias: ${value.b.toFixed(2)}`,
+                            text: `Weights: ${value.w.toFixed(
+                                2
+                            )}<br />Bias: ${value.b.toFixed(2)}`,
                         },
                     ],
                 },
@@ -64,18 +70,22 @@ const LinearRegression: React.FC = () => {
                     data: [
                         {
                             x: history.map((i) => i.w),
-                            y: history.map((i) => i.squaredCost)
+                            y: history.map((i) => i.squaredCost),
                         },
                     ],
                     layout: {
                         annotations: [
                             {
-                              x: history[history.length - 1].w,
-                              y: history[history.length - 1].squaredCost,
-                              text: `Cost: ${history[history.length - 1].squaredCost.toFixed(2)}<br />Iterations: ${history[history.length - 1].i / 1000} / 100`,
-                              arrowhead: 2,
-                            }
-                          ]
+                                x: history[history.length - 1].w,
+                                y: history[history.length - 1].squaredCost,
+                                text: `Cost: ${history[
+                                    history.length - 1
+                                ].squaredCost.toFixed(2)}<br />Iterations: ${
+                                    history[history.length - 1].i / 1000
+                                } / 100`,
+                                arrowhead: 2,
+                            },
+                        ],
                     },
                 },
             ]);

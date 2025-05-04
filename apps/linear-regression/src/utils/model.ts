@@ -1,4 +1,7 @@
-import { HousePriceInfoType } from '../types/housePriceInfo';
+export type HousePriceInfoType = {
+    size_sqft: number;
+    rent: number;
+}
 
 function gradient(data: HousePriceInfoType[], w: number, b: number) {
     let dj_dw = 0.0;
