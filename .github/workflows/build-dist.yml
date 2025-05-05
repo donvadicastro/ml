@@ -39,6 +39,6 @@ jobs:
           git checkout --orphan build
           git rm -rf .
 
-          git add .
+          git add . --ignore=node_modules
           git commit -m "Build output from ${GITHUB_SHA}"
           git push --force origin build
