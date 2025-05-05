@@ -29,7 +29,7 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: npm run build
+        run: npx nx run-many --all --target=build
 
       - name: Push dist to build branch
         run: |

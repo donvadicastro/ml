@@ -8,8 +8,8 @@ import { OneFeatureType } from '@ml/linear-regression';
 const LinearRegression: React.FC = () => {
     const [data, setData] = useState<OneFeatureType[]>([]);
 
-    const plotRef = useRef(null);
-    const plotCostRef = useRef(null);
+    const plotRef = useRef<Plot | null | any>(null);
+    const plotCostRef = useRef<Plot | null | any>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,8 +33,8 @@ const LinearRegression: React.FC = () => {
     useEffect(() => {
         if (data.length === 0 || !plotRef.current) return;
 
-        const ref = (plotRef.current as Plotly.PlotlyHTMLElement).el;
-        const costRef = (plotCostRef.current as Plotly.PlotlyHTMLElement).el;
+        const ref = plotRef.current.el;
+        const costRef = plotCostRef.current.el;
 
         const iterations = 100000;
         const alpha = 0.00000000005;
