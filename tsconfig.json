@@ -1,13 +1,19 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compileOnSave": false,
-  "files": [],
-  "references": [
-    {
-      "path": "./apps/linear-regression-e2e"
-    },
-    {
-      "path": "./apps/linear-regression"
-    }
-  ]
+    "extends": "./tsconfig.base.json",
+    "compileOnSave": false,
+    "files": [],
+    "references": [
+        {
+            "path": "./apps/linear-regression-e2e"
+        },
+        {
+            "path": "./apps/linear-regression"
+        },
+        {
+            "path": "./libs/linear-regression"
+        },
+        {
+            "path": "./libs/data-sources"
+        }
+    ]
 }
