@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Plot from 'react-plotly.js';
 import Plotly from 'plotly.js/dist/plotly.js';
-import { fetchCsvData } from '../utils/loader';
-import { HousePriceInfoType, model, train } from '../utils/model';
+import { fetchCsvData } from '@ml/data-sources';
+import { model, train } from '@ml/linear-regression';
+import { OneFeatureType } from '@ml/linear-regression';
 
 const LinearRegression: React.FC = () => {
-    const [data, setData] = useState<HousePriceInfoType[]>([]);
+    const [data, setData] = useState<OneFeatureType[]>([]);
 
     const plotRef = useRef(null);
     const plotCostRef = useRef(null);
@@ -13,9 +14,16 @@ const LinearRegression: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             setData(
-                await fetchCsvData(
-                    'https://raw.githubusercontent.com/Davidportlouis/house_price_prediction/refs/heads/master/dataset/brooklyn.csv'
+                (
+                    await fetchCsvData(
+                        'https://raw.githubusercontent.com/Davidportlouis/house_price_prediction/refs/heads/master/dataset/brooklyn.csv'
+                    )
                 )
+                // using linear regression type OneFeatureType with one feature and the target
+                .map((x) => ({
+                    feature: Number(x.size_sqft),
+                    target: Number(x.rent),
+                }) as OneFeatureType)
             );
         };
 
@@ -39,7 +47,6 @@ const LinearRegression: React.FC = () => {
         }[] = [];
 
         const trainGenerator = train(data, iterations, 0, 0, alpha);
-
         let next = trainGenerator.next();
 
         while (next.done === false) {
@@ -52,13 +59,10 @@ const LinearRegression: React.FC = () => {
                     data: [
                         null,
                         {
-                            // eslint-disable-next-line no-loop-func
                             y: [min, max].map((x: number) =>
                                 model(x, value.w, value.b)
                             ),
-                            text: `Weights: ${value.w.toFixed(
-                                2
-                            )}<br />Bias: ${value.b.toFixed(2)}`,
+                            text: `Weights: ${value.w.toFixed(2)}<br />Bias: ${value.b.toFixed(2)}`,
                         },
                     ],
                 },
@@ -124,8 +128,8 @@ const LinearRegression: React.FC = () => {
                     ref={plotRef}
                     data={[
                         {
-                            x: data.map((x: HousePriceInfoType) => x.size_sqft),
-                            y: data.map((x: HousePriceInfoType) => x.rent),
+                            x: data.map((x) => x.feature),
+                            y: data.map((x) => x.target),
                             type: 'scatter',
                             mode: 'markers',
                             marker: { color: 'blue' },
@@ -205,13 +209,13 @@ const LinearRegression: React.FC = () => {
     );
 };
 
-function getMinMax(data: HousePriceInfoType[]) {
-    const size_sqft = data
-        .filter((x) => typeof x.size_sqft === 'number')
-        .map((x) => x.size_sqft);
+function getMinMax(data: OneFeatureType[]) {
+    const features = data
+        .filter((x) => typeof x.feature === 'number' && !isNaN(x.feature))
+        .map((x) => x.feature);
 
-    const min = Math.min(...size_sqft);
-    const max = Math.max(...size_sqft);
+    const min = Math.min(...features);
+    const max = Math.max(...features);
 
     return { min, max };
 }
