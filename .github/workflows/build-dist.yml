@@ -39,6 +39,8 @@ jobs:
           git checkout --orphan build
           git rm -rf .
 
-          git add . --ignore=node_modules
+          git add . --ignore-errors
+          git reset node_modules
+          
           git commit -m "Build output from ${GITHUB_SHA}"
           git push --force origin build
