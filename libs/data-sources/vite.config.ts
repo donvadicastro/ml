@@ -29,10 +29,10 @@ export default defineConfig(() => ({
             // Could also be a dictionary or array of multiple entry points.
             entry: 'src/index.ts',
             name: '@ml/data-sources',
-            fileName: 'index',
+            fileName: (format) => `index.${format}.js`,
             // Change this to the formats you want to support.
             // Don't forget to update your package.json as well.
-            formats: ['es' as const],
+            formats: ['umd' as const],
         },
         rollupOptions: {
             // External packages that should not be bundled into your library.
