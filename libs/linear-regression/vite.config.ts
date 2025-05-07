@@ -30,7 +30,7 @@ export default defineConfig(() => ({
             // Could also be a dictionary or array of multiple entry points.
             entry: 'src/index.ts',
             name: '@ml/linear-regression',
-            fileName: 'index',
+            fileName: (format) => `index.${format}.js`,
             // Change this to the formats you want to support.
             // Don't forget to update your package.json as well.
             formats: ['umd' as const],
