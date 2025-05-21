@@ -1,0 +1,385 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.7.1",
+  "pathMappings": {},
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    },
+    {
+      "name": "@nx/react/router-plugin",
+      "options": {
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "startTargetName": "start",
+        "watchDepsTargetName": "watch-deps",
+        "buildDepsTargetName": "build-deps",
+        "typecheckTargetName": "typecheck"
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "name": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "test",
+        "serveTargetName": "serve",
+        "devTargetName": "dev",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static",
+        "typecheckTargetName": "typecheck",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "name": "@nx/cypress/plugin",
+      "options": {
+        "targetName": "e2e",
+        "openTargetName": "open-cypress",
+        "componentTestingTargetName": "component-test",
+        "ciTargetName": "e2e-ci"
+      }
+    }
+  ],
+  "fileMap": {
+    "projectFileMap": {
+      "linear-regression": [
+        {
+          "file": "apps/linear-regression/eslint.config.mjs",
+          "hash": "8789163670399984295",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "apps/linear-regression/index.html",
+          "hash": "8811305819207988435"
+        },
+        {
+          "file": "apps/linear-regression/package.json",
+          "hash": "5663355350521947891"
+        },
+        {
+          "file": "apps/linear-regression/postcss.config.js",
+          "hash": "2759402739052110475"
+        },
+        {
+          "file": "apps/linear-regression/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/linear-regression/src/app/app.spec.tsx",
+          "hash": "5080896962754314415",
+          "deps": [
+            "npm:@testing-library/react",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/linear-regression/src/app/app.tsx",
+          "hash": "2567416845249994192",
+          "deps": [
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/linear-regression/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/linear-regression/src/main.tsx",
+          "hash": "6494962159756833686",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom",
+            "npm:react-dom"
+          ]
+        },
+        {
+          "file": "apps/linear-regression/src/pages/linear-regression.tsx",
+          "hash": "546914893684128973",
+          "deps": [
+            "npm:react",
+            "npm:react-plotly.js",
+            "npm:plotly.js",
+            "@ml/data-sources",
+            "@ml/linear-regression"
+          ]
+        },
+        {
+          "file": "apps/linear-regression/src/styles.css",
+          "hash": "9540575453073076294"
+        },
+        {
+          "file": "apps/linear-regression/src/types/housePriceInfoType.ts",
+          "hash": "12342141541235449326"
+        },
+        {
+          "file": "apps/linear-regression/src/types/plotly-js.d.ts",
+          "hash": "17623411482965700332"
+        },
+        {
+          "file": "apps/linear-regression/tailwind.config.js",
+          "hash": "13090734457927965885",
+          "deps": [
+            "npm:@nx/react"
+          ]
+        },
+        {
+          "file": "apps/linear-regression/tsconfig.app.json",
+          "hash": "1211119685671571211"
+        },
+        {
+          "file": "apps/linear-regression/tsconfig.json",
+          "hash": "13123933714280214606"
+        },
+        {
+          "file": "apps/linear-regression/tsconfig.spec.json",
+          "hash": "16305818908628027731"
+        },
+        {
+          "file": "apps/linear-regression/vite.config.ts",
+          "hash": "1026617074462727564",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react"
+          ]
+        }
+      ],
+      "linear-regression-e2e": [
+        {
+          "file": "apps/linear-regression-e2e/cypress.config.ts",
+          "hash": "16509624530198041436",
+          "deps": [
+            "npm:@nx/cypress",
+            "npm:cypress"
+          ]
+        },
+        {
+          "file": "apps/linear-regression-e2e/eslint.config.mjs",
+          "hash": "7267301145493616340",
+          "deps": [
+            "npm:eslint-plugin-cypress"
+          ]
+        },
+        {
+          "file": "apps/linear-regression-e2e/package.json",
+          "hash": "16884688946377840841"
+        },
+        {
+          "file": "apps/linear-regression-e2e/src/e2e/app.cy.ts",
+          "hash": "13204859623759002043"
+        },
+        {
+          "file": "apps/linear-regression-e2e/src/fixtures/example.json",
+          "hash": "11785586596216172004"
+        },
+        {
+          "file": "apps/linear-regression-e2e/src/support/app.po.ts",
+          "hash": "11157016311132186162"
+        },
+        {
+          "file": "apps/linear-regression-e2e/src/support/commands.ts",
+          "hash": "9573766352767295889"
+        },
+        {
+          "file": "apps/linear-regression-e2e/src/support/e2e.ts",
+          "hash": "1054106023200826784"
+        },
+        {
+          "file": "apps/linear-regression-e2e/tsconfig.json",
+          "hash": "13460915489313561609"
+        }
+      ],
+      "@ml/data-sources": [
+        {
+          "file": "libs/data-sources/README.md",
+          "hash": "10826948712701444618"
+        },
+        {
+          "file": "libs/data-sources/eslint.config.mjs",
+          "hash": "2930379110491475067",
+          "deps": [
+            [
+              "npm:jsonc-eslint-parser",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "libs/data-sources/package.json",
+          "hash": "12678673554445068301",
+          "deps": [
+            "npm:papaparse"
+          ]
+        },
+        {
+          "file": "libs/data-sources/src/index.ts",
+          "hash": "9371530139815361936"
+        },
+        {
+          "file": "libs/data-sources/src/lib/utils/cache.ts",
+          "hash": "11008029306378319360"
+        },
+        {
+          "file": "libs/data-sources/src/lib/utils/loader.ts",
+          "hash": "1312741170156407107",
+          "deps": [
+            "npm:papaparse"
+          ]
+        },
+        {
+          "file": "libs/data-sources/tsconfig.json",
+          "hash": "4041483701269408600"
+        },
+        {
+          "file": "libs/data-sources/tsconfig.lib.json",
+          "hash": "3865745283873616689"
+        },
+        {
+          "file": "libs/data-sources/tsconfig.spec.json",
+          "hash": "18126912175260880231"
+        },
+        {
+          "file": "libs/data-sources/vite.config.ts",
+          "hash": "16157630388637362769",
+          "deps": [
+            "npm:vite",
+            "npm:vite-plugin-dts"
+          ]
+        }
+      ],
+      "@ml/linear-regression": [
+        {
+          "file": "libs/linear-regression/README.md",
+          "hash": "12190901548299286985"
+        },
+        {
+          "file": "libs/linear-regression/eslint.config.mjs",
+          "hash": "2930379110491475067",
+          "deps": [
+            [
+              "npm:jsonc-eslint-parser",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "libs/linear-regression/package.json",
+          "hash": "4812370043685470518"
+        },
+        {
+          "file": "libs/linear-regression/src/index.ts",
+          "hash": "14393422472854271035"
+        },
+        {
+          "file": "libs/linear-regression/src/lib/utils/model.ts",
+          "hash": "13438787918453212045"
+        },
+        {
+          "file": "libs/linear-regression/tsconfig.json",
+          "hash": "4041483701269408600"
+        },
+        {
+          "file": "libs/linear-regression/tsconfig.lib.json",
+          "hash": "6527084359900128292"
+        },
+        {
+          "file": "libs/linear-regression/tsconfig.spec.json",
+          "hash": "18126912175260880231"
+        },
+        {
+          "file": "libs/linear-regression/vite.config.ts",
+          "hash": "1761257553104607080",
+          "deps": [
+            "npm:vite",
+            "npm:vite-plugin-dts"
+          ]
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "10420079495110127939"
+      },
+      {
+        "file": ".github/workflows/build-dist.yml",
+        "hash": "14150932333131430331"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "15151264217495047269"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "16884713733442577066"
+      },
+      {
+        "file": "README.md",
+        "hash": "11727099188123967327"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "10429121722336111038"
+      },
+      {
+        "file": "nx.json",
+        "hash": "363066820011794799"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "11326154619886846795"
+      },
+      {
+        "file": "package.json",
+        "hash": "17190640850165244025"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "17271855623537049137"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "18132073024976155609"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "11353296252891915959"
+      },
+      {
+        "file": "vitest.workspace.ts",
+        "hash": "4665328684042819579"
+      },
+      {
+        "file": "workflows/ci.yml",
+        "hash": "11006769487199870674"
+      }
+    ]
+  }
+}

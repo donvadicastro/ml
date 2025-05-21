@@ -1,0 +1,13 @@
+> vite build
+
+[36mvite v6.2.6 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 2 modules transformed.
+rendering chunks...
+[32m
+[36m[vite:dts][32m Start generate declaration files...[39m
+computing gzip size...
+[2mdist/[22m[36mindex.umd.js  [39m[1m[2m1.71 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m
+[32m[36m[vite:dts][32m Declaration files built in 1135ms.
+[39m
+[32m✓ built in 1.21s[39m

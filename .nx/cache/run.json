@@ -1,0 +1,43 @@
+{
+  "run": {
+    "command": "nx run-many --all --target=build",
+    "startTime": "2025-05-21T11:16:35.800Z",
+    "endTime": "2025-05-21T11:16:37.725Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "@ml/data-sources:build",
+      "target": "build",
+      "projectName": "@ml/data-sources",
+      "hash": "12673575537946796212",
+      "startTime": "2025-05-21T11:16:35.822Z",
+      "endTime": "2025-05-21T11:16:36.076Z",
+      "params": "",
+      "cacheStatus": "remote-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "@ml/linear-regression:build",
+      "target": "build",
+      "projectName": "@ml/linear-regression",
+      "hash": "17180092984355034028",
+      "startTime": "2025-05-21T11:16:35.823Z",
+      "endTime": "2025-05-21T11:16:36.091Z",
+      "params": "",
+      "cacheStatus": "remote-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "linear-regression:build",
+      "target": "build",
+      "projectName": "linear-regression",
+      "hash": "12374678842651376310",
+      "startTime": "2025-05-21T11:16:35.823Z",
+      "endTime": "2025-05-21T11:16:37.725Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
+}
