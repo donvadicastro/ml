@@ -1,21 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Plot from 'react-plotly.js';
 import Plotly from 'plotly.js/dist/plotly.js';
-import { fetchCsvData } from '@ml/data-sources';
-import { model, train } from '@ml/linear-regression';
-import { OneFeatureType } from '@ml/linear-regression';
+import { utils } from '@ml/data-sources';
+import { model } from '@ml/linear-regression';
 
 const LinearRegression: React.FC = () => {
-    const [data, setData] = useState<OneFeatureType[]>([]);
+    const [data, setData] = useState<model.OneFeatureType[]>([]);
 
-    const plotRef = useRef<Plot | null | any>(null);
-    const plotCostRef = useRef<Plot | null | any>(null);
+    const plotRef = useRef<Plot>(null);
+    const plotCostRef = useRef<Plot>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             setData(
                 (
-                    await fetchCsvData(
+                    await utils.fetchCsvData(
                         'https://raw.githubusercontent.com/Davidportlouis/house_price_prediction/refs/heads/master/dataset/brooklyn.csv'
                     )
                 )
@@ -23,7 +22,7 @@ const LinearRegression: React.FC = () => {
                 .map((x) => ({
                     feature: Number(x.size_sqft),
                     target: Number(x.rent),
-                }) as OneFeatureType)
+                }) as model.OneFeatureType)
             );
         };
 
@@ -33,8 +32,8 @@ const LinearRegression: React.FC = () => {
     useEffect(() => {
         if (data.length === 0 || !plotRef.current) return;
 
-        const ref = plotRef.current.el;
-        const costRef = plotCostRef.current.el;
+        const ref = plotRef.current?.el as HTMLElement;
+        const costRef = plotCostRef.current?.el as HTMLElement;
 
         const iterations = 100000;
         const alpha = 0.00000000005;
@@ -46,7 +45,7 @@ const LinearRegression: React.FC = () => {
             i: number;
         }[] = [];
 
-        const trainGenerator = train(data, iterations, 0, 0, alpha);
+        const trainGenerator = model.train(data, iterations, 0, 0, alpha);
         let next = trainGenerator.next();
 
         while (next.done === false) {
@@ -60,7 +59,7 @@ const LinearRegression: React.FC = () => {
                         null,
                         {
                             y: [min, max].map((x: number) =>
-                                model(x, value.w, value.b)
+                                model.model(x, value.w, value.b)
                             ),
                             text: `Weights: ${value.w.toFixed(2)}<br />Bias: ${value.b.toFixed(2)}`,
                         },
@@ -209,9 +208,9 @@ const LinearRegression: React.FC = () => {
     );
 };
 
-function getMinMax(data: OneFeatureType[]) {
+function getMinMax(data: model.OneFeatureType[]) {
     const features = data
-        .filter((x) => typeof x.feature === 'number' && !isNaN(x.feature))
+        .filter((x) => !isNaN(x.feature))
         .map((x) => x.feature);
 
     const min = Math.min(...features);
