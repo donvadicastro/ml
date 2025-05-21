@@ -7,8 +7,8 @@ import { model } from '@ml/linear-regression';
 const LinearRegression: React.FC = () => {
     const [data, setData] = useState<model.OneFeatureType[]>([]);
 
-    const plotRef = useRef<Plot>(null);
-    const plotCostRef = useRef<Plot>(null);
+    const plotRef = useRef<Plot | null>(null);
+    const plotCostRef = useRef<Plot | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,8 +32,10 @@ const LinearRegression: React.FC = () => {
     useEffect(() => {
         if (data.length === 0 || !plotRef.current) return;
 
-        const ref = plotRef.current?.el as HTMLElement;
-        const costRef = plotCostRef.current?.el as HTMLElement;
+        const ref = plotRef.current?.el; // @ts-expect-error inconsistency React Plotly and Plotly types
+        const costRef = plotCostRef.current?.el;
+
+        console.log(plotRef);
 
         const iterations = 100000;
         const alpha = 0.00000000005;
