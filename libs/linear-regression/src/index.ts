@@ -1,1 +1,1 @@
-export * from './lib/utils/model.js';
+export * as model from './lib/utils/model.js';

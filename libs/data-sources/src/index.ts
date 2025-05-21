@@ -1,2 +1,2 @@
-export * from './lib/utils/loader.js';
-export * from './lib/utils/cache.js';
+export * as utils from './lib/utils/loader.js';
+export * as cache from './lib/utils/cache.js';
