@@ -32,7 +32,10 @@ const LinearRegression: React.FC = () => {
     useEffect(() => {
         if (data.length === 0 || !plotRef.current) return;
 
-        const ref = plotRef.current?.el; // @ts-expect-error inconsistency React Plotly and Plotly types
+        // @ts-expect-error inconsistency React Plotly and Plotly types
+        const ref = plotRef.current?.el;
+
+        // @ts-expect-error inconsistency React Plotly and Plotly types
         const costRef = plotCostRef.current?.el;
 
         console.log(plotRef);
